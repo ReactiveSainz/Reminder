@@ -1,9 +1,18 @@
-import { ADD_REMINDER } from '../constants/reminder';
+import { ADD_REMINDER, DELETE_REMINDER } from '../constants/reminder';
 
-export const addReminder = (text) => {
+export const addReminder = (text, date) => {
   const action = {
     type: ADD_REMINDER,
-    text
-  }
+    text,
+    date,
+  };
   return action;
-}
+};
+
+export const deleteReminder = (id) => {
+  const action = {
+    type: DELETE_REMINDER,
+    id,
+  };
+  return action;
+};

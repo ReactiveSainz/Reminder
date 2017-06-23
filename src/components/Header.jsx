@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Header = () => {
-  return(
-    <div>
-      Remider Pro!
-    </div>
-  )
-};
+const Header = () => (
+  <div className="tittle">
+    Remider Pro!
+  </div>
+);
 
 export default Header;
