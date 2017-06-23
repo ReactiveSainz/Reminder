@@ -32,8 +32,13 @@ class App extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  console.log('state', state);
+}
+
 App.propTypes = {
   addReminder: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addReminder })(App);
+export default connect(mapStateToProps, { addReminder })(App);
