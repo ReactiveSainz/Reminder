@@ -5,6 +5,7 @@ import { addReminder, deleteReminder } from './actions';
 import './styles/App.css';
 import Header from './components/Header';
 import ReminderForm from './components/ReminderForm';
+import moment from 'moment';
 
 class App extends Component {
   constructor(props) {
@@ -35,13 +36,14 @@ class App extends Component {
     });
   }
   addReminder() {
-    this.props.addReminder(this.state.text,this.state.date);
+    this.props.addReminder(this.state.text, this.state.date);
     this.resetState();
   }
   deleteReminder(id) {
     this.props.deleteReminder(id);
   }
   render() {
+    const makeDate = dateString => moment(new Date(dateString)).fromNow();
     return (
       <div className="App">
         <Header />
@@ -58,7 +60,7 @@ class App extends Component {
                 <li key={reminder.id} className="list-group-item">
                   <div className="list-item">
                     <div>{reminder.text}</div>
-                    <div>{reminder.date}</div>
+                    <div>{makeDate(reminder.date)}</div>
                   </div>
                   <div
                     role="button"
