@@ -9,6 +9,7 @@
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "redux": "^3.7.0",
+    "sfcookies": "^1.0.2",
     "styled-components": "^2.1.0"
   },
   "devDependencies": {

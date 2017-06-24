@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { addReminder, deleteReminder } from './actions';
+import { addReminder, deleteReminder, clearReminders } from './actions';
 import './styles/App.css';
 import Header from './components/Header';
 import ReminderForm from './components/ReminderForm';
@@ -18,6 +18,7 @@ class App extends Component {
     this.addReminder = this.addReminder.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.clearReminders = this.clearReminders.bind(this);
   }
   onChange(event) {
     this.setState({
@@ -41,6 +42,9 @@ class App extends Component {
   }
   deleteReminder(id) {
     this.props.deleteReminder(id);
+  }
+  clearReminders(){
+    this.props.clearReminders();
   }
   render() {
     const makeDate = dateString => moment(new Date(dateString)).fromNow();
@@ -75,6 +79,12 @@ class App extends Component {
             }
           </ul>
         }
+        <div
+          className="btn btn-danger"
+          onClick={this.clearReminders}
+        >
+          Clear Reminders
+        </div>
       </div>
     );
   }
@@ -89,7 +99,8 @@ function mapStateToProps(state) {
 App.propTypes = {
   addReminder: PropTypes.func.isRequired,
   deleteReminder: PropTypes.func.isRequired,
+  clearReminders: PropTypes.func.isRequired,
   reminders: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default connect(mapStateToProps, { addReminder, deleteReminder })(App);
+export default connect(mapStateToProps, { addReminder, deleteReminder, clearReminders })(App);
